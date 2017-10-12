@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>  
+#include <visa.h>
+
+
+
+class myclass
+{
+	//protected is also an option
+private:
+	int x;
+public:
+	myclass();
+	void addNumber(int y);
+
+void setX();
+int getX();
+myclass operator+(myclass& a, myclass&b);
+
+myclass& operator=(myclass& a);
+
+};
+
+
+myclass::myclass(){
+x=0;
+
+}
+
+void myclass::addNumber(int y)
+{
+x = x+y;
+
+}
+
+
+void myclass::setX(int a)
+{
+ if (a<10 ) x = 10;
+ else x=a;
+
+}
+
+
+myclass::myclass(myclass& a) // copy constructors
+{
+x = a.x;
+
+}
+
+  
+myclass myclass::operator+(myclass& a, myclass& b)
+{
+myclass A(a);
+myclass A.addNumber(b);
+return A;
+
+//myclass A;
+//A.x = a.x + b.x
+
+}
+
+
+
+myclass& myclass::operator=(myclass& a)
+{
+x = a.x;
+return *this;
+
+}
+
+
+int  
+main(void)  
+{  
+
+//instantiation
+myclass A;
+myclass B;
+myclass C;
+
+A.addnumber(7);
+B.addnumber(5);
+C.addNumber(3);
+
+
+myclass E(5);
+myclass F(E); 
+
+
+A = B +C;
+
+C = D = E = F;
+
+  return(0);  
+
+}  
